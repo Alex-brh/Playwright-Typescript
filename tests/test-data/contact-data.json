@@ -1,0 +1,19 @@
+{
+  "contactFormData": [
+    {
+      "name": "Alice Johnson",
+      "email": "alice@example.com",
+      "message": "This is the first test submission."
+    },
+    {
+      "name": "Bob Williams",
+      "email": "bob@example.com",
+      "message": "This is the second test submission."
+    },
+    {
+      "name": "Carol White",
+      "email": "carol@example.com",
+      "message": "This is the third test submission."
+    }
+  ]
+}

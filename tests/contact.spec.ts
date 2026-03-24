@@ -2,6 +2,12 @@ import { test, expect } from "@playwright/test";
 import { StoreHomePage } from "./POM/home-page";
 import { ContactPage } from "./POM/contact-page";
 import config from "../playwright.config";
+import fs from "fs"; // Import the Node.js 'fs' module to read the JSON file containing test data.
+import path from "path"; // Import the Node.js 'path' module to work with file paths.
+
+const filePath = path.join(__dirname, '../tests/test-data/contact-data.json'); // Construct the file path to the JSON file containing test data for contact page.
+const jsonData = fs.readFileSync(filePath, 'utf-8');
+const ContactData = JSON.parse(jsonData);
 
 // Determine the base URL from the Playwright configuration or use a fallback URL.
 const baseURL = config.use?.baseURL ?? "https://free-5288352.webadorsite.com/";
@@ -114,19 +120,19 @@ test.describe(`Test 'Contact' page by`, () => {
         // Define an array of test data for different contact form submissions.
         const contactFormTestCases = [
             {
-                name: "Alice Johnson",
-                email: "alice@example.com",
-                message: "This is the first test submission."
+                name: ContactData.contactFormData[0].name,
+                email: ContactData.contactFormData[0].email,
+                message: ContactData.contactFormData[0].message
             },
             {
-                name: "Bob Williams",
-                email: "bob@example.com",
-                message: "This is the second test submission."
+                name: ContactData.contactFormData[1].name,
+                email: ContactData.contactFormData[1].email,
+                message: ContactData.contactFormData[1].message
             },
             {
-                name: "Carol White",
-                email: "carol@example.com",
-                message: "This is the third test submission."
+                name: ContactData.contactFormData[2].name,
+                email: ContactData.contactFormData[2].email,
+                message: ContactData.contactFormData[2].message
             }
         ];
 
