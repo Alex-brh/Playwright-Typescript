@@ -1,7 +1,13 @@
 import { test, expect } from '@playwright/test';
 import { StoreHomePage } from './POM/home-page';
 import { CustomerTestimonials } from './POM/customer-testimonials';
+import fs from 'fs'; // Import the Node.js 'fs' module to read the JSON file containing test data.
+import path from 'path'; // Import the Node.js 'path' module to work with file paths.
 import config from '../playwright.config';
+
+const filePath = path.join(__dirname, '../tests/test-data/clearance-page-data.json');
+const jsonData = fs.readFileSync(filePath, 'utf-8');
+const CustomerTestimonialsData = JSON.parse(jsonData);
 
 // Determine the base URL from the Playwright configuration or use a fallback URL.
 const baseURL = config.use?.baseURL ?? 'https://free-5288352.webadorsite.com/';
@@ -29,13 +35,12 @@ test.describe(`Test 'Customer Testimonials' page by`, () => {
 
     test(`validating the customer testimonials content`, async () => {
         const testimonials = [
-            { expectedTestimonialsCount: 7, index: 0, expectedTestimonialsText: `"I can't say enough about the outstanding service I received from your company. Their team went above and beyond to meet our needs and exceeded our expectations."` },
-            { expectedTestimonialsCount: 7, index: 1, expectedTestimonialsText: `Benjamin Thistlewood` },
-            { expectedTestimonialsCount: 7, index: 2, expectedTestimonialsText: `"I can't say enough about the outstanding service I received from your company. Their team went above and beyond to meet our needs and exceeded our expectations."` },
-            { expectedTestimonialsCount: 7, index: 3, expectedTestimonialsText: `Emma Thompson` },
-            { expectedTestimonialsCount: 7, index: 4, expectedTestimonialsText: `"I can't say enough about the outstanding service I received from your company. Their team went above and beyond to meet our needs and exceeded our expectations."` },
-            { expectedTestimonialsCount: 7, index: 5, expectedTestimonialsText: `Oliver Hartman` },
-            { expectedTestimonialsCount: 7, index: 6, expectedTestimonialsText: `DISCLAIMER: This is NOT a real e-comm website. It's being used for educational purposes ONLY. No items can be purchased and/or delivered through this website.` },
+            { expectedTestimonialsCount: 7, index: 0, expectedTestimonialsText: `"${CustomerTestimonialsData.customerTestimonials[0].testimonial}"` },
+            { expectedTestimonialsCount: 7, index: 1, expectedTestimonialsText: `${CustomerTestimonialsData.customerTestimonials[0].name}` },
+            { expectedTestimonialsCount: 7, index: 2, expectedTestimonialsText: `"${CustomerTestimonialsData.customerTestimonials[1].testimonial}"` },
+            { expectedTestimonialsCount: 7, index: 3, expectedTestimonialsText: `${CustomerTestimonialsData.customerTestimonials[1].name}` },
+            { expectedTestimonialsCount: 7, index: 4, expectedTestimonialsText: `"${CustomerTestimonialsData.customerTestimonials[2].testimonial}"` },
+            { expectedTestimonialsCount: 7, index: 5, expectedTestimonialsText: `${CustomerTestimonialsData.customerTestimonials[2].name}` },
         ];
         for (const testimonial of testimonials) {
             await customerTestimonials.validateCustomerTestimonialsVisible(testimonial);

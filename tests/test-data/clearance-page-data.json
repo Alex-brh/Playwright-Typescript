@@ -1,0 +1,20 @@
+{
+    "customerTestimonials": [
+        {
+            "name": "Benjamin Thistlewood",
+            "testimonial": "I can't say enough about the outstanding service I received from your company. Their team went above and beyond to meet our needs and exceeded our expectations."
+        },
+        {
+            "name": "Emma Thompson",
+            "testimonial": "I can't say enough about the outstanding service I received from your company. Their team went above and beyond to meet our needs and exceeded our expectations."
+        },
+        {
+            "name": "Oliver Hartman",
+            "testimonial": "I can't say enough about the outstanding service I received from your company. Their team went above and beyond to meet our needs and exceeded our expectations."
+        },
+        {
+            "name": "N/A",
+            "testimonial": "DISCLAIMER: This is NOT a real e-comm website. It's being used for educational purposes ONLY. No items can be purchased and/or delivered through this website."
+        }
+    ]
+}

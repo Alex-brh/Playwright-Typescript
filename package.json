@@ -10,5 +10,9 @@
   "devDependencies": {
     "@playwright/test": "^1.57.0",
     "@types/node": "^24.5.2"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
   }
 }
