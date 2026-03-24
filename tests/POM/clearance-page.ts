@@ -90,7 +90,7 @@ export class ClearancePage {
         { elementLocator, elementIndex, elementText }:
             {
                 elementLocator: Locator;
-                elementIndex: number;
+                elementIndex: number | string;
                 elementText: string;
             }): Promise<void> {
         await this.commonMethods.validateElementText({

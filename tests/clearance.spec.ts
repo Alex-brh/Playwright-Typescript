@@ -3,7 +3,13 @@ import { StoreHomePage } from "./POM/home-page";
 import { ClearancePage } from "./POM/clearance-page";
 import { ContactPage } from "./POM/contact-page";
 import { ShowcasePage } from "./POM/showcase-page";
+import fs from "fs"; // Import the Node.js 'fs' module to read the JSON file containing test data.
+import path from "path"; // Import the Node.js 'path' module to work with file paths.
 import config from "../playwright.config";
+
+const filePath = path.join(__dirname, '../tests/test-data/clearance-data.json'); // Construct the file path to the JSON file containing test data for clearance page.
+const jsonData = fs.readFileSync(filePath, 'utf-8');
+const ClearanceData = JSON.parse(jsonData);
 
 // Determine the base URL from the Playwright configuration or use a fallback URL.
 const baseURL = config.use?.baseURL ?? "https://free-5288352.webadorsite.com/";
@@ -38,25 +44,25 @@ test.describe(`Test 'Clearance' page by`, () => {
         // Validate the header and paragraph texts on the 'Clearance' page.
         let elementDetails = [
             {
-                elementLocator: clearancePage.pageHeader, elementIndex: 0, elementText: "Clearance items"
+                elementLocator: clearancePage.pageHeader, elementIndex: 0, elementText: `${ClearanceData.headerAndParagraphs[0].description}`
             },
             {
-                elementLocator: clearancePage.pageHeader, elementIndex: 1, elementText: "Information",
+                elementLocator: clearancePage.pageHeader, elementIndex: 1, elementText: `${ClearanceData.headerAndParagraphs[1].description}`
             },
             {
-                elementLocator: clearancePage.paragraphTexts, elementIndex: 0, elementText: "Behind every service we provide is a dedicated team of professionals, each bringing their unique expertise and enthusiasm to our business.",
+                elementLocator: clearancePage.paragraphTexts, elementIndex: 0, elementText: `${ClearanceData.headerAndParagraphs[2].description}`
             },
             {
-                elementLocator: clearancePage.paragraphTexts, elementIndex: 1, elementText: "We pride ourselves on our adaptability and commitment to excellence in every aspect of our service. Explore what we have to offer and how we can contribute to your success.",
+                elementLocator: clearancePage.paragraphTexts, elementIndex: 1, elementText: `${ClearanceData.headerAndParagraphs[3].description}`
             },
             {
-                elementLocator: clearancePage.paragraphTexts, elementIndex: 2, elementText: "This is where our journey begins. Get to know our business and what we do, and how we're committed to quality and great service. Join us as we grow and succeed together. We're glad you're here to be a part of our story.",
+                elementLocator: clearancePage.paragraphTexts, elementIndex: 2, elementText: `${ClearanceData.headerAndParagraphs[4].description}`
             },
             {
-                elementLocator: clearancePage.paragraphTexts, elementIndex: 3, elementText: "In this space, we share inspiration, tips, and stories that help you get the most out of our services. Whether you're looking for helpful tips, background information, or a behind-the-scenes look: you'll find it all here. We regularly post new articles, so keep an eye on the blog for updates and new insights.",
+                elementLocator: clearancePage.paragraphTexts, elementIndex: 3, elementText: `${ClearanceData.headerAndParagraphs[5].description}`
             },
             {
-                elementLocator: clearancePage.paragraphTexts, elementIndex: 4, elementText: "DISCLAIMER: This is NOT a real e-comm website. It's being used for educational purposes ONLY. No items can be purchased and/or delivered through this website.",
+                elementLocator: clearancePage.paragraphTexts, elementIndex: 4, elementText: `${ClearanceData.headerAndParagraphs[6].description}`
             }
         ];
         for (const [i, expectedElementDetails] of elementDetails.entries()) {
@@ -90,11 +96,11 @@ test.describe(`Test 'Clearance' page by`, () => {
         await expect(clearancePage.clearancePageImage).toHaveCount(3);
         // Validate that each image has the 'loading' attribute set to 'lazy'.
         let elementDetails = [
-            { elementLocator: clearancePage.clearancePageImage, elementIndex: 0, attributeName: "data-jwlink-title", attributeValue: "Best product #1" },
+            { elementLocator: clearancePage.clearancePageImage, elementIndex: 0, attributeName: "data-jwlink-title", attributeValue:  `${ClearanceData.bestProducts[0].description}` },
 
-            { elementLocator: clearancePage.clearancePageImage, elementIndex: 1, attributeName: "data-jwlink-title", attributeValue: "Best product #2" },
+            { elementLocator: clearancePage.clearancePageImage, elementIndex: 1, attributeName: "data-jwlink-title", attributeValue:  `${ClearanceData.bestProducts[1].description}` },
 
-            { elementLocator: clearancePage.clearancePageImage, elementIndex: 2, attributeName: "data-jwlink-title", attributeValue: "Best product #3" },
+            { elementLocator: clearancePage.clearancePageImage, elementIndex: 2, attributeName: "data-jwlink-title", attributeValue: `${ClearanceData.bestProducts[2].description}` }
         ];
         for (const [i, expectedElementDetails] of elementDetails.entries()) {
             await showcasePage.validateElemAttribute(expectedElementDetails);
