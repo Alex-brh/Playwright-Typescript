@@ -2,7 +2,7 @@ import { type Page, type Locator, expect, APIRequestContext } from "@playwright/
 
 interface ElementDetails {
     elementLocator: Locator; // Required.
-    elementIndex?: number; // Optional.
+    elementIndex?: number | string; // Optional.
     elementHref?: string; // Optional.
     elementText?: string; // Optional.
     attributeName?: string; // Optional.

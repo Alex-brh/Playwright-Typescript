@@ -35,7 +35,7 @@ export class ClearancePage {
     readonly clearanceLabelLocator: Locator;
 
     /**
-     * Creates an instance of ShowcasePage.
+     * Creates an instance of ClearancePage.
      * @param {Page} page - The Playwright Page object.
      */
     constructor(public readonly page: Page) {
@@ -90,7 +90,7 @@ export class ClearancePage {
         { elementLocator, elementIndex, elementText }:
             {
                 elementLocator: Locator;
-                elementIndex: number;
+                elementIndex: number | string;
                 elementText: string;
             }): Promise<void> {
         await this.commonMethods.validateElementText({
