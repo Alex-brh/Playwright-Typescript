@@ -5,7 +5,7 @@ import fs from 'fs'; // Import the Node.js 'fs' module to read the JSON file con
 import path from 'path'; // Import the Node.js 'path' module to work with file paths.
 import config from '../playwright.config';
 
-const filePath = path.join(__dirname, '../tests/test-data/clearance-page-data.json');
+const filePath = path.join(__dirname, '../tests/test-data/customer-testimonials-data.json'); // Construct the file path to the JSON file containing test data for customer testimonials.
 const jsonData = fs.readFileSync(filePath, 'utf-8');
 const CustomerTestimonialsData = JSON.parse(jsonData);
 
@@ -55,8 +55,8 @@ test.describe(`Test 'Customer Testimonials' page by`, () => {
 
     test('validating comments are present', async () => {
         const comments = [
-            { comment: `Great service! Grat products! Great prices!`, index: 0 },
-            { comment: `Great service overall`, index: 1 },
+            { comment: `${CustomerTestimonialsData.comments[0].comment}`, index: 0 },
+            { comment: `${CustomerTestimonialsData.comments[1].comment}`, index: 1 },
         ];
         for (const comment of comments) {
             await customerTestimonials.validateCustomerCommentVisible(comment);

@@ -16,5 +16,15 @@
             "name": "N/A",
             "testimonial": "DISCLAIMER: This is NOT a real e-comm website. It's being used for educational purposes ONLY. No items can be purchased and/or delivered through this website."
         }
+    ],
+    "comments": [
+        {
+            "comment": "Great service! Grat products! Great prices!",
+            "index": 0
+        },
+        {
+            "comment": "Great service overall",
+            "index": 1
+        }
     ]
 }
